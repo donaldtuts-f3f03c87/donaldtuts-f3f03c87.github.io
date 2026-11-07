@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>片库网-高清影视资源站_热门电影电视剧在线观看与推荐</title>
+  <meta name="description" content="片库网是专注高清影视内容的资源聚合站，提供热门电影、电视剧、纪录片、动漫等在线观看与推荐，分类清晰、更新及时，帮助用户快速找到想看的片库网资源。">
+  <meta name="keywords" content="片库网,高清影视,电影在线观看,电视剧推荐,免费影视资源">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1a2e'/%3E%3Cpath d='M9 8h14v3H9zm0 6h14v3H9zm0 6h9v3H9z' fill='%23e94560'/%3E%3Ccircle cx='24' cy='22' r='4' fill='%23f5c518'/%3E%3C/svg%3E">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --pk-bg:#0d0d1a;
+      --pk-surface:#16162a;
+      --pk-card:#1e1e38;
+      --pk-border:#2a2a4a;
+      --pk-text:#e8e8f0;
+      --pk-muted:#9999b3;
+      --pk-accent:#e94560;
+      --pk-accent2:#f5c518;
+      --pk-blue:#3b82f6;
+      --pk-radius:14px;
+      --pk-radius-sm:10px;
+      --pk-shadow:0 4px 20px rgba(0,0,0,.45);
+      --pk-shadow-hover:0 8px 30px rgba(233,69,96,.18);
+      --pk-transition:all .25s cubic-bezier(.4,0,.2,1);
+      --pk-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--pk-font);
+      background:var(--pk-bg);
+      color:var(--pk-text);
+      line-height:1.75;
+      font-size:15px;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    ul{list-style:none}
+    .pk-container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .pk-section{margin-bottom:44px}
+    .pk-section-title{
+      font-size:22px;
+      font-weight:700;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .pk-section-title::before{
+      content:'';
+      display:inline-block;
+      width:5px;height:22px;
+      background:linear-gradient(180deg,var(--pk-accent),var(--pk-accent2));
+      border-radius:3px;
+      flex-shrink:0;
+    }
+    .pk-section-sub{
+      color:var(--pk-muted);
+      font-size:13px;
+      margin-bottom:20px;
+      padding-left:15px;
+    }
+
+    /* ========== 导航 ========== */
+    .pk-nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(13,13,26,.92);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--pk-border);
+      padding:0 20px;
+    }
+    .pk-nav-inner{
+      max-width:1200px;margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;
+      height:62px;gap:16px;
+    }
+    .pk-logo{
+      display:flex;align-items:center;gap:9px;
+      font-size:20px;font-weight:800;letter-spacing:-.5px;flex-shrink:0;
+    }
+    .pk-logo-icon{
+      width:34px;height:34px;
+      background:linear-gradient(135deg,var(--pk-accent),var(--pk-accent2));
+      border-radius:9px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:17px;color:#fff;font-weight:900;
+    }
+    .pk-logo span{background:linear-gradient(90deg,#fff,var(--pk-accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .pk-nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+    .pk-nav-links::-webkit-scrollbar{display:none}
+    .pk-nav-links a{
+      padding:7px 13px;border-radius:8px;font-size:13.5px;
+      color:var(--pk-muted);white-space:nowrap;transition:var(--pk-transition);
+    }
+    .pk-nav-links a:hover{color:var(--pk-text);background:var(--pk-card)}
+    .pk-nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .pk-search-sm{
+      display:flex;align-items:center;gap:6px;
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      border-radius:9px;padding:6px 12px;
+    }
+    .pk-search-sm input{
+      background:transparent;border:none;outline:none;
+      color:var(--pk-text);font-size:13px;width:130px;
+    }
+    .pk-search-sm input::placeholder{color:var(--pk-muted)}
+
+    /* ========== Banner ========== */
+    .pk-banner{
+      background:
+        radial-gradient(ellipse at 25% 0%,rgba(233,69,96,.18) 0%,transparent 55%),
+        radial-gradient(ellipse at 75% 100%,rgba(59,130,246,.12) 0%,transparent 50%),
+        var(--pk-bg);
+      padding:48px 20px 42px;
+      border-bottom:1px solid var(--pk-border);
+    }
+    .pk-banner-inner{max-width:1200px;margin:0 auto}
+    .pk-banner h1{
+      font-size:clamp(26px,4vw,42px);
+      font-weight:900;line-height:1.25;letter-spacing:-1px;
+      margin-bottom:14px;
+    }
+    .pk-banner h1 em{
+      font-style:normal;
+      background:linear-gradient(90deg,var(--pk-accent),var(--pk-accent2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .pk-banner-desc{
+      color:var(--pk-muted);font-size:15px;max-width:680px;
+      margin-bottom:24px;line-height:1.8;
+    }
+    .pk-banner-search{
+      display:flex;max-width:560px;
+      background:var(--pk-card);
+      border:1px solid var(--pk-border);
+      border-radius:12px;overflow:hidden;margin-bottom:24px;
+    }
+    .pk-banner-search input{
+      flex:1;background:transparent;border:none;outline:none;
+      padding:13px 18px;color:var(--pk-text);font-size:14.5px;
+    }
+    .pk-banner-search input::placeholder{color:var(--pk-muted)}
+    .pk-banner-search button{
+      background:linear-gradient(135deg,var(--pk-accent),#c73550);
+      border:none;color:#fff;padding:0 24px;font-size:14px;font-weight:600;
+      cursor:pointer;transition:var(--pk-transition);
+    }
+    .pk-banner-search button:hover{filter:brightness(1.1)}
+    .pk-banner-tags{display:flex;flex-wrap:wrap;gap:9px}
+    .pk-banner-tags a{
+      padding:7px 15px;border-radius:20px;
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      font-size:13px;color:var(--pk-muted);transition:var(--pk-transition);
+    }
+    .pk-banner-tags a:hover{
+      border-color:var(--pk-accent);color:var(--pk-accent2);
+      transform:translateY(-2px);box-shadow:var(--pk-shadow-hover);
+    }
+
+    /* ========== 分类快捷 ========== */
+    .pk-cat-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+      gap:12px;
+    }
+    .pk-cat-item{
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius-sm);padding:16px 12px;
+      text-align:center;transition:var(--pk-transition);cursor:pointer;
+    }
+    .pk-cat-item:hover{
+      transform:translateY(-3px);box-shadow:var(--pk-shadow-hover);
+      border-color:var(--pk-accent);
+    }
+    .pk-cat-item .pk-cat-emoji{font-size:22px;margin-bottom:6px;display:block}
+    .pk-cat-item .pk-cat-name{font-size:13.5px;font-weight:600}
+    .pk-cat-item .pk-cat-count{font-size:11px;color:var(--pk-muted);margin-top:2px}
+
+    /* ========== 卡片通用 ========== */
+    .pk-card{
+      background:var(--pk-card);
+      border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius);
+      overflow:hidden;
+      transition:var(--pk-transition);
+    }
+    .pk-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--pk-shadow-hover);
+      border-color:rgba(233,69,96,.35);
+    }
+    .pk-card-body{padding:14px 16px 16px}
+    .pk-card-title{
+      font-size:15px;font-weight:700;margin-bottom:6px;
+      display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;
+    }
+    .pk-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+    .pk-tag{
+      font-size:11px;padding:2px 8px;border-radius:5px;
+      background:rgba(233,69,96,.12);color:var(--pk-accent);
+    }
+    .pk-tag.pk-tag-blue{background:rgba(59,130,246,.12);color:var(--pk-blue)}
+    .pk-tag.pk-tag-gold{background:rgba(245,197,24,.12);color:var(--pk-accent2)}
+    .pk-card-desc{
+      font-size:12.5px;color:var(--pk-muted);line-height:1.6;
+      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+      margin-bottom:10px;
+    }
+    .pk-card-meta{
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:11.5px;color:var(--pk-muted);
+    }
+    .pk-card-meta .pk-hot{color:var(--pk-accent2);font-weight:600}
+
+    /* 封面占位 */
+    .pk-cover{
+      height:150px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:32px;font-weight:900;color:rgba(255,255,255,.22);
+      position:relative;overflow:hidden;
+    }
+    .pk-cover::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.35));
+    }
+    .pk-cover.c1{background:linear-gradient(135deg,#1a1a3e,#e94560)}
+    .pk-cover.c2{background:linear-gradient(135deg,#162447,#1f8a70)}
+    .pk-cover.c3{background:linear-gradient(135deg,#2b1e4a,#f5c518)}
+    .pk-cover.c4{background:linear-gradient(135deg,#1a1a2e,#3b82f6)}
+    .pk-cover.c5{background:linear-gradient(135deg,#3d1a2e,#e94560)}
+    .pk-cover.c6{background:linear-gradient(135deg,#0d2818,#1f8a70)}
+    .pk-cover.c7{background:linear-gradient(135deg,#2e1a1a,#f59e0b)}
+    .pk-cover.c8{background:linear-gradient(135deg,#1a2e3d,#06b6d4)}
+
+    /* ========== 热门推荐网格 ========== */
+    .pk-grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:18px}
+    .pk-grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+
+    /* ========== 最新更新列表 ========== */
+    .pk-update-list{display:flex;flex-direction:column;gap:10px}
+    .pk-update-item{
+      display:flex;align-items:center;gap:14px;
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius-sm);padding:13px 16px;
+      transition:var(--pk-transition);
+    }
+    .pk-update-item:hover{
+      border-color:rgba(233,69,96,.35);transform:translateX(4px);
+      box-shadow:var(--pk-shadow-hover);
+    }
+    .pk-update-badge{
+      flex-shrink:0;font-size:11px;padding:3px 9px;border-radius:5px;
+      background:rgba(233,69,96,.15);color:var(--pk-accent);
+      font-weight:600;white-space:nowrap;
+    }
+    .pk-update-badge.new{background:rgba(34,197,94,.15);color:#22c55e}
+    .pk-update-badge.hot{background:rgba(245,197,24,.15);color:var(--pk-accent2)}
+    .pk-update-main{flex:1;min-width:0}
+    .pk-update-name{font-size:14px;font-weight:600;margin-bottom:2px}
+    .pk-update-summary{font-size:12px;color:var(--pk-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .pk-update-time{font-size:11px;color:var(--pk-muted);flex-shrink:0}
+
+    /* ========== 深度解析正文 ========== */
+    .pk-article{
+      background:var(--pk-surface);
+      border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius);
+      padding:32px 34px;
+    }
+    .pk-article h3{
+      font-size:18px;font-weight:700;margin:26px 0 10px;
+      color:var(--pk-accent2);
+    }
+    .pk-article h3:first-child{margin-top:0}
+    .pk-article p{
+      font-size:14.5px;color:#c8c8dd;line-height:1.9;
+      margin-bottom:14px;text-align:justify;
+    }
+    .pk-article strong{color:var(--pk-accent2);font-weight:600}
+
+    /* ========== 体验指南 ========== */
+    .pk-guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+    .pk-guide-card{
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius-sm);padding:20px;
+      transition:var(--pk-transition);
+    }
+    .pk-guide-card:hover{border-color:rgba(59,130,246,.4);transform:translateY(-2px)}
+    .pk-guide-icon{font-size:26px;margin-bottom:10px}
+    .pk-guide-card h4{font-size:15px;font-weight:700;margin-bottom:6px}
+    .pk-guide-card p{font-size:13px;color:var(--pk-muted);line-height:1.7}
+
+    /* ========== FAQ ========== */
+    .pk-faq-list{display:flex;flex-direction:column;gap:10px}
+    .pk-faq-item{
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius-sm);overflow:hidden;
+    }
+    .pk-faq-q{
+      padding:15px 18px;font-size:14.5px;font-weight:600;
+      cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+      transition:var(--pk-transition);
+    }
+    .pk-faq-q:hover{color:var(--pk-accent2)}
+    .pk-faq-q::after{content:'+';font-size:20px;color:var(--pk-accent);font-weight:300;transition:var(--pk-transition)}
+    .pk-faq-item.open .pk-faq-q::after{transform:rotate(45deg)}
+    .pk-faq-a{
+      padding:0 18px;max-height:0;overflow:hidden;
+      transition:max-height .3s ease,padding .3s ease;
+      font-size:13.5px;color:var(--pk-muted);line-height:1.8;
+    }
+    .pk-faq-item.open .pk-faq-a{max-height:300px;padding:0 18px 16px}
+
+    /* ========== 评论 ========== */
+    .pk-comments{display:flex;flex-direction:column;gap:12px}
+    .pk-comment{
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius-sm);padding:16px 18px;
+      transition:var(--pk-transition);
+    }
+    .pk-comment:hover{border-color:rgba(233,69,96,.25)}
+    .pk-comment-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .pk-avatar{
+      width:32px;height:32px;border-radius:50%;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      font-size:13px;font-weight:700;color:#fff;
+    }
+    .pk-avatar.a1{background:linear-gradient(135deg,#e94560,#c73550)}
+    .pk-avatar.a2{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+    .pk-avatar.a3{background:linear-gradient(135deg,#f59e0b,#d97706)}
+    .pk-avatar.a4{background:linear-gradient(135deg,#22c55e,#16a34a)}
+    .pk-avatar.a5{background:linear-gradient(135deg,#8b5cf6,#7c3aed)}
+    .pk-avatar.a6{background:linear-gradient(135deg,#06b6d4,#0891b2)}
+    .pk-comment-name{font-size:13px;font-weight:600}
+    .pk-comment-date{font-size:11px;color:var(--pk-muted);margin-left:auto}
+    .pk-comment-text{font-size:13.5px;color:#c8c8dd;line-height:1.7}
+    .pk-comment-actions{display:flex;gap:16px;margin-top:8px;font-size:12px;color:var(--pk-muted)}
+    .pk-comment-actions span{cursor:pointer;transition:var(--pk-transition)}
+    .pk-comment-actions span:hover{color:var(--pk-accent2)}
+
+    /* ========== 资讯卡片 ========== */
+    .pk-news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+    .pk-news-card{
+      background:var(--pk-card);border:1px solid var(--pk-border);
+      border-radius:var(--pk-radius-sm);padding:18px;
+      transition:var(--pk-transition);cursor:pointer;
+    }
+    .pk-news-card:hover{transform:translateY(-3px);border-color:rgba(59,130,246,.4);box-shadow:var(--pk-shadow-hover)}
+    .pk-news-date{font-size:11.5px;color:var(--pk-accent2);margin-bottom:6px;font-weight:600}
+    .pk-news-title{font-size:15px;font-weight:700;margin-bottom:8px;line-height:1.5}
+    .pk-news-desc{font-size:13px;color:var(--pk-muted);line-height:1.7}
+
+    /* ========== 页脚 ========== */
+    .pk-footer{
+      background:var(--pk-surface);
+      border-top:1px solid var(--pk-border);
+      padding:40px 20px 28px;margin-top:20px;
+    }
+    .pk-footer-inner{max-width:1200px;margin:0 auto}
+    .pk-footer-grid{
+      display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:28px;margin-bottom:28px;
+    }
+    .pk-footer-brand h4{font-size:17px;font-weight:800;margin-bottom:10px}
+    .pk-footer-brand p{font-size:12.5px;color:var(--pk-muted);line-height:1.8;max-width:320px}
+    .pk-footer-col h5{font-size:13px;font-weight:700;margin-bottom:12px;color:var(--pk-accent2)}
+    .pk-footer-col a{display:block;font-size:12.5px;color:var(--pk-muted);padding:3px 0;transition:var(--pk-transition)}
+    .pk-footer-col a:hover{color:var(--pk-text)}
+    .pk-footer-bottom{
+      border-top:1px solid var(--pk-border);padding-top:20px;
+      display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+      font-size:11.5px;color:var(--pk-muted);
+    }
+
+    /* ========== 响应式 ========== */
+    @media(max-width:768px){
+      .pk-nav-links{display:none}
+      .pk-banner{padding:32px 16px 28px}
+      .pk-banner h1{font-size:24px}
+      .pk-article{padding:20px 18px}
+      .pk-footer-grid{grid-template-columns:1fr 1fr;gap:20px}
+      .pk-grid-4{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+      .pk-cover{height:110px;font-size:24px}
+      .pk-section-title{font-size:18px}
+      .pk-update-item{flex-wrap:wrap;gap:8px}
+      .pk-update-summary{white-space:normal}
+    }
+    @media(max-width:480px){
+      .pk-grid-4{grid-template-columns:1fr 1fr;gap:10px}
+      .pk-grid-3{grid-template-columns:1fr}
+      .pk-card-body{padding:10px 12px 12px}
+      .pk-card-title{font-size:13px}
+      .pk-card-desc{font-size:11.5px}
+      .pk-footer-grid{grid-template-columns:1fr}
+    }
+
+    /* 滚动条美化 */
+    ::-webkit-scrollbar{width:8px;height:8px}
+    ::-webkit-scrollbar-track{background:var(--pk-bg)}
+    ::-webkit-scrollbar-thumb{background:var(--pk-border);border-radius:4px}
+    ::-webkit-scrollbar-thumb:hover{background:#3a3a5a}
+  </style>
+</head>
+<body>
+
+<!-- ===== 导航 ===== -->
+<nav class="pk-nav" id="pk-nav">
+  <div class="pk-nav-inner">
+    <a href="/" class="pk-logo">
+      <span class="pk-logo-icon">片</span>
+      <span>片库网</span>
+    </a>
+    <div class="pk-nav-links">
+      <a href="/#pk-hot">热门推荐</a>
+      <a href="/#pk-update">最新更新</a>
+      <a href="/#pk-cat">分类片库</a>
+      <a href="/#pk-deep">深度解析</a>
+      <a href="/#pk-guide">体验指南</a>
+      <a href="/#pk-faq">常见问题</a>
+      <a href="/#pk-comments">用户评论</a>
+      <a href="/#pk-news">影视资讯</a>
+    </div>
+    <div class="pk-nav-right">
+      <div class="pk-search-sm">
+        <span style="color:var(--pk-muted);font-size:14px;">🔍</span>
+        <input type="text" placeholder="搜索片名/演员">
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Banner ===== -->
+<section class="pk-banner">
+  <div class="pk-banner-inner">
+    <h1>片库网 · <em>高清影视随手可查</em><br>热门电影电视剧在线汇聚</h1>
+    <p class="pk-banner-desc">片库网为你聚合当下热门的电影、电视剧、动漫、纪录片资源，分类清晰、更新及时。无论你想找口碑佳作还是下饭爽剧，都能在这里快速定位。</p>
+    <div class="pk-banner-search">
+      <input type="text" placeholder="输入片名、演员或导演，快速查找片库网资源...">
+      <button>搜索</button>
+    </div>
+    <div class="pk-banner-tags">
+      <a href="/#pk-hot">🔥 本周热播</a>
+      <a href="/#pk-update">📺 今日更新</a>
+      <a href="/#pk-cat">🎬 电影片库</a>
+      <a href="/#pk-cat">📽️ 电视剧集</a>
+      <a href="/#pk-cat">🎌 动漫番剧</a>
+      <a href="/#pk-cat">🌍 纪录片</a>
+      <a href="/#pk-cat">🏆 高分榜单</a>
+      <a href="/#pk-news">📰 影视资讯</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 主体 ===== -->
+<main class="pk-container">
+
+  <!-- ===== 内容简介 ===== -->
+  <section class="pk-section" id="pk-intro" style="margin-top:36px;">
+    <h2 class="pk-section-title">关于片库网 · 你想找的影视资源都在这里</h2>
+    <div class="pk-article">
+      <p><strong>片库网</strong>是一个面向影视爱好者的内容聚合与推荐平台，核心价值在于帮助用户从海量影视作品中快速筛选出值得花时间观看的内容。我们围绕电影、电视剧、动漫、纪录片、综艺等类型，提供结构化的分类索引、热度排序和编辑推荐，让找片这件事变得简单高效。</p>
+      <p>如果你是经常追剧的用户，片库网的最新更新列表能帮你第一时间掌握各平台剧集的播出进度；如果你更偏爱口碑佳作，深度解析和评分卡片会带你了解作品的题材特点与亮点；如果你只是想随便看看，热门推荐和分类入口也能快速带你进入内容世界。</p>
+      <p>这个页面的意义在于，它不仅是片库网的一个入口，更是一份持续更新的影视消费指南。我们会关注不同类型作品的节奏特点、适合人群以及同类对比，帮助你在选择之前建立合理预期。收藏这个页面，下次想找片的时候就不用再东翻西找了。</p>
+    </div>
+  </section>
+
+  <!-- ===== 热门推荐 ===== -->
+  <section class="pk-section" id="pk-hot">
+    <h2 class="pk-section-title">热门推荐 · 本周片库网高热度精选</h2>
+    <p class="pk-section-sub">根据近期播放热度与用户讨论度综合整理，覆盖多种类型</p>
+    <div class="pk-grid-4">
+      <div class="pk-card">
+        <div class="pk-cover c1">暗夜追光</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">暗夜追光</div>
+          <div class="pk-card-tags"><span class="pk-tag">悬疑</span><span class="pk-tag pk-tag-blue">犯罪</span><span class="pk-tag pk-tag-gold">高分</span></div>
+          <div class="pk-card-desc">一桩十年前的悬案重新浮出水面，刑警与法医联手追查真相，每集都有反转。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 9.2分</span><span>更新至16集</span></div>
+        </div>
+      </div>
+      <div class="pk-card">
+        <div class="pk-cover c2">山海之间</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">山海之间</div>
+          <div class="pk-card-tags"><span class="pk-tag pk-tag-blue">剧情</span><span class="pk-tag">家庭</span><span class="pk-tag pk-tag-gold">口碑</span></div>
+          <div class="pk-card-desc">三代人跨越四十年的家庭史诗，从渔村到都市，细腻刻画普通人的挣扎与温情。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 8.8分</span><span>全32集完结</span></div>
+        </div>
+      </div>
+      <div class="pk-card">
+        <div class="pk-cover c3">星际拾荒者</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">星际拾荒者</div>
+          <div class="pk-card-tags"><span class="pk-tag pk-tag-blue">科幻</span><span class="pk-tag">冒险</span><span class="pk-tag pk-tag-gold">特效</span></div>
+          <div class="pk-card-desc">废土宇宙中一群底层拾荒者意外获得神秘装置，卷入星系势力争夺战。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 8.5分</span><span>电影 · 128分钟</span></div>
+        </div>
+      </div>
+      <div class="pk-card">
+        <div class="pk-cover c4">教室里的夏天</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">教室里的夏天</div>
+          <div class="pk-card-tags"><span class="pk-tag">青春</span><span class="pk-tag pk-tag-blue">校园</span><span class="pk-tag pk-tag-gold">治愈</span></div>
+          <div class="pk-card-desc">高三毕业前的最后一个夏天，五个少年在废弃教室里的秘密基地即将被拆除。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 8.6分</span><span>全24集完结</span></div>
+        </div>
+      </div>
+      <div class="pk-card">
+        <div class="pk-cover c5">她的第二幕</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">她的第二幕</div>
+          <div class="pk-card-tags"><span class="pk-tag">女性</span><span class="pk-tag pk-tag-blue">职场</span><span class="pk-tag pk-tag-gold">话题</span></div>
+          <div class="pk-card-desc">四十岁重返职场的女主播，在流量与真实之间重新寻找自己的位置。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 8.7分</span><span>更新至20集</span></div>
+        </div>
+      </div>
+      <div class="pk-card">
+        <div class="pk-cover c6">深海档案</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">深海档案</div>
+          <div class="pk-card-tags"><span class="pk-tag pk-tag-blue">纪录片</span><span class="pk-tag">自然</span><span class="pk-tag pk-tag-gold">4K</span></div>
+          <div class="pk-card-desc">跟随科考队深入马里亚纳海沟，记录人类首次在万米深渊的长期驻留。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 9.0分</span><span>全6集</span></div>
+        </div>
+      </div>
+      <div class="pk-card">
+        <div class="pk-cover c7">拳台之上</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">拳台之上</div>
+          <div class="pk-card-tags"><span class="pk-tag">运动</span><span class="pk-tag pk-tag-blue">励志</span><span class="pk-tag pk-tag-gold">热血</span></div>
+          <div class="pk-card-desc">退役拳手为给女儿治病重返擂台，面对的是曾经击败自己的宿敌。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 8.4分</span><span>电影 · 115分钟</span></div>
+        </div>
+      </div>
+      <div class="pk-card">
+        <div class="pk-cover c8">代码迷城</div>
+        <div class="pk-card-body">
+          <div class="pk-card-title">代码迷城</div>
+          <div class="pk-card-tags"><span class="pk-tag pk-tag-blue">科技</span><span class="pk-tag">悬疑</span><span class="pk-tag pk-tag-gold">新剧</span></div>
+          <div class="pk-card-desc">程序员发现公司核心算法存在自我意识，一场关于AI伦理的暗战悄然展开。</div>
+          <div class="pk-card-meta"><span class="pk-hot">🔥 8.9分</span><span>更新至8集</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 最新更新 ===== -->
+  <section class="pk-section" id="pk-update">
+    <h2 class="pk-section-title">最新更新 · 片库网今日动态追踪</h2>
+    <p class="pk-section-sub">2026年11月7日更新 · 实时同步各平台播出进度</p>
+    <div class="pk-update-list">
+      <div class="pk-update-item">
+        <span class="pk-update-badge new">新上线</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">暗夜追光 第16集</div>
+          <div class="pk-update-summary">关键证人突然翻供，主角团队面临证据链断裂危机</div>
+        </div>
+        <span class="pk-update-time">今日 18:20</span>
+      </div>
+      <div class="pk-update-item">
+        <span class="pk-update-badge hot">热播</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">她的第二幕 第20集</div>
+          <div class="pk-update-summary">直播事故后女主选择公开真相，舆论出现反转</div>
+        </div>
+        <span class="pk-update-time">今日 16:45</span>
+      </div>
+      <div class="pk-update-item">
+        <span class="pk-update-badge new">新上线</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">代码迷城 第8集</div>
+          <div class="pk-update-summary">AI系统首次主动向人类发出警告信号</div>
+        </div>
+        <span class="pk-update-time">今日 14:10</span>
+      </div>
+      <div class="pk-update-item">
+        <span class="pk-update-badge">更新</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">教室里的夏天 番外篇</div>
+          <div class="pk-update-summary">毕业十年后的同学会，有人重逢有人告别</div>
+        </div>
+        <span class="pk-update-time">今日 12:00</span>
+      </div>
+      <div class="pk-update-item">
+        <span class="pk-update-badge hot">热播</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">山海之间 第30集</div>
+          <div class="pk-update-summary">老宅拆迁在即，一家人最后一次围坐吃饭</div>
+        </div>
+        <span class="pk-update-time">昨日 21:30</span>
+      </div>
+      <div class="pk-update-item">
+        <span class="pk-update-badge new">新上线</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">深海档案 第5集</div>
+          <div class="pk-update-summary">深渊热液喷口附近发现未知生物群落</div>
+        </div>
+        <span class="pk-update-time">昨日 20:00</span>
+      </div>
+      <div class="pk-update-item">
+        <span class="pk-update-badge">预告</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">拳台之上 · 幕后特辑</div>
+          <div class="pk-update-summary">主演为角色增重15公斤，拳击训练花絮首曝</div>
+        </div>
+        <span class="pk-update-time">昨日 15:20</span>
+      </div>
+      <div class="pk-update-item">
+        <span class="pk-update-badge">更新</span>
+        <div class="pk-update-main">
+          <div class="pk-update-name">星际拾荒者 · 导演剪辑版</div>
+          <div class="pk-update-summary">新增12分钟未曝光片段，补充主角背景故事</div>
+        </div>
+        <span class="pk-update-time">11月5日</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 分类入口 ===== -->
+  <section class="pk-section" id="pk-cat">
+    <h2 class="pk-section-title">分类片库 · 按类型快速找片</h2>
+    <p class="pk-section-sub">片库网将内容按题材与形式分类，方便你按喜好浏览</p>
+    <div class="pk-cat-grid">
+      <div class="pk-cat-item"><span class="pk-cat-emoji">🎬</span><span class="pk-cat-name">电影大片</span><span class="pk-cat-count">2,840部</span></div>
+      <div class="pk-cat-item"><span class="pk-cat-emoji">📺</span><span class="pk-cat-name">电视剧集</span><span class="pk-cat-count">1,620部</span></div>
+      <div class="pk-cat-item"><span class="pk-cat-emoji">🎌</span><span class="pk-cat-name">动漫番剧</span><span class="pk-cat-count">980部</span></div>
+      <div class="pk-cat-item"><span class="pk-cat-emoji">🌍</span><span class="pk-cat-name">纪录片</span><span class="pk-cat-count">460部</span></div>
+      <div class="pk-cat-item"><span class="pk-cat-emoji">😂</span><span class="pk-cat-name">综艺节目</span><span class="pk-cat-count">720档</span></div>
+      <div class="pk-cat-item"><span class="pk-cat-emoji">🔍</span><span class="pk-cat-name">悬疑推理</span><span class="pk-cat-count">1,150部</span></div>
+      <div class="pk-cat-item"><span class="pk-cat-emoji">💕</span><span class="pk-cat-name">爱情剧情</span><span class="pk-cat-count">2,300部</span></div>
+      <div class="pk-cat-item"><span class="pk-cat-emoji">🏆</span><span class="pk-cat-name">高分榜单</span><span class="pk-cat-count">TOP 500</span></div>
+    </div>
+  </section>
+
+  <!-- ===== 深度解析 ===== -->
+  <section class="pk-section" id="pk-deep">
+    <h2 class="pk-section-title">深度解析 · 片库网内容消费指南</h2>
+    <div class="pk-article">
+      <h3>为什么片库网值得作为找片入口</h3>
+      <p>影视内容的消费决策通常发生在观看之前，而用户面临的核心问题是：<strong>信息过载与选择困难</strong>。各大平台的内容库越来越庞大，但用户能接触到的推荐往往局限于算法推送。片库网的价值在于提供一个相对中立、结构化的内容视角——按类型、热度、口碑和更新状态进行组织，让用户能够按照自己的偏好主动筛选。</p>
+      <p>从类型分布来看，片库网的内容覆盖了当前主流影视消费的绝大多数场景：悬疑犯罪类作品适合喜欢逻辑推演和反转体验的观众，节奏紧凑、信息密度高；家庭情感类作品更适合需要情绪共鸣与放松的观看场景，节奏相对舒缓；科幻与奇幻类作品满足对世界观和视觉奇观的期待，适合大屏观看；纪录片则提供了另一种消费路径——以真实事件和知识获取为核心吸引力。</p>
+
+      <h3>内容吸引力的判断维度</h3>
+      <p>在片库网浏览时，判断一部作品是否值得看，可以从几个维度入手。首先是<strong>题材与标签的匹配度</strong>，页面上每张卡片都标注了类型标签，帮助你在几秒内判断是否属于自己感兴趣的方向。其次是<strong>更新状态</strong>，连载中的作品适合追更型用户，已完结的作品则适合需要一口气看完的观众。第三是<strong>口碑与热度</strong>，高评分不一定适合所有人，但可以作为质量参考，结合短评摘要能更准确地判断是否合胃口。</p>
+      <p>另一个容易被忽略的维度是<strong>节奏与消费成本</strong>。电影通常2小时左右可以完成一次完整消费，而电视剧需要投入几十小时的时间成本。片库网在推荐卡片上标注了集数、时长和更新进度，正是为了帮助用户在投入之前建立合理预期。对于时间有限的用户，优先选择已完结短剧或电影是更高效的策略。</p>
+
+      <h3>适合人群与使用建议</h3>
+      <p>片库网适合的受众范围较广：如果你是<strong>追剧型用户</strong>，可以重点关注最新更新列表和连载卡片，掌握每周播出节奏；如果你是<strong>周末观影型用户</strong>，电影分类和高分榜单会更适合，用两小时获得一次完整的观影体验；如果你偏好<strong>知识获取与真实故事</strong>，纪录片和深度解析模块能提供更有营养的内容。此外，对影视行业动态感兴趣的用户，也可以在资讯模块看到新片定档、制作特辑和行业观察。</p>
+      <p>需要指出的是，片库网不生产独家内容，而是作为内容聚合与导航层存在。我们的目标是让用户用更少的时间找到更合适的内容，而不是用算法无限延长停留时间。因此页面上的推荐更侧重结构化信息和可读的编辑判断，而非单纯的点击诱导。这也是我们持续维护分类索引和更新列表的原因。</p>
+    </div>
+  </section>
+
+  <!-- ===== 体验指南 ===== -->
+  <section class="pk-section" id="pk-guide">
+    <h2 class="pk-section-title">体验指南 · 这样使用片库网更高效</h2>
+    <div class="pk-guide-grid">
+      <div class="pk-guide-card">
+        <div class="pk-guide-icon">🗂️</div>
+        <h4>分类索引清晰</h4>
+        <p>按电影、电视剧、动漫、纪录片等维度组织内容，每个分类下还有题材标签，层层缩小范围，快速定位目标。</p>
+      </div>
+      <div class="pk-guide-card">
+        <div class="pk-guide-icon">📱</div>
+        <h4>移动端友好</h4>
+        <p>页面在手机上自动调整布局，卡片尺寸和文字大小都针对小屏优化，通勤途中也能方便浏览和搜索。</p>
+      </div>
+      <div class="pk-guide-card">
+        <div class="pk-guide-icon">🔄</div>
+        <h4>更新追踪方便</h4>
+        <p>最新更新列表按时间排列，标注集数和动态摘要，追更用户每天来看一次就能掌握进度。</p>
+      </div>
+      <div class="pk-guide-card">
+        <div class="pk-guide-icon">⭐</div>
+        <h4>口碑参考实用</h4>
+        <p>卡片上的评分和热度信息来自用户行为统计，配合简短看点描述，帮助你判断是否值得投入时间。</p>
+      </div>
+      <div class="pk-guide-card">
+        <div class="pk-guide-icon">🔗</div>
+        <h4>推荐路径扩展</h4>
+        <p>从任意卡片出发，都能通过标签和分类链接进入相关专题，发现更多类似内容，避免看完一部就断档。</p>
+      </div>
+      <div class="pk-guide-card">
+        <div class="pk-guide-icon">📌</div>
+        <h4>适合收藏备用</h4>
+        <p>将片库网加入书签，需要找片时直接打开，省去在多平台之间反复切换比较的时间。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="pk-section" id="pk-faq">
+    <h2 class="pk-section-title">常见问题 · 关于片库网你可能想了解</h2>
+    <div class="pk-faq-list">
+      <div class="pk-faq-item open">
+        <div class="pk-faq-q">片库网主要提供什么类型的内容？</div>
+        <div class="pk-faq-a">片库网覆盖电影、电视剧、动漫、纪录片、综艺等主流影视类型，并按悬疑、爱情、科幻、家庭等题材做了细分。页面上的热门推荐和分类入口可以帮助你快速了解当前内容分布，无论偏好哪种类型都能找到对应的浏览路径。</div>
+      </div>
+      <div class="pk-faq-item">
+        <div class="pk-faq-q">第一次使用片库网，应该从哪里开始看？</div>
+        <div class="pk-faq-a">建议先浏览热门推荐模块，这里的卡片标注了类型标签、评分和简短看点，能快速建立对当前热门内容的印象。如果已有明确偏好，直接进入分类片库按题材筛选效率更高。追剧用户可以重点关注最新更新列表，了解连载剧集的播出进度。</div>
+      </div>
+      <div class="pk-faq-item">
+        <div class="pk-faq-q">片库网的更新频率是怎样的？</div>
+        <div class="pk-faq-a">页面上的最新更新模块会跟随各平台播出节奏同步调整，通常每天会有若干条更新记录，包括新剧上线、剧集更新和预告发布。具体更新频率取决于内容本身的播出安排，并非固定时间批量刷新。建议收藏页面后定期查看。</div>
+      </div>
+      <div class="pk-faq-item">
+        <div class="pk-faq-q">评分和热度数据是怎么来的？</div>
+        <div class="pk-faq-a">卡片上的评分和热度信息基于用户浏览行为和讨论度综合计算，用于提供参考而非绝对标准。不同作品的受众规模不同，评分高低不能完全代表是否适合你。建议结合题材标签和卡片上的简短看点描述综合判断，找到符合自己口味的作品。</div>
+      </div>
+      <div class="pk-faq-item">
+        <div class="pk-faq-q">如何找到和某部作品类似的内容？</div>
+        <div class="pk-faq-a">每张推荐卡片上都附有题材标签，点击标签可以进入对应分类，浏览同类型作品。深度解析模块中也会涉及同类内容的对比分析，帮助你在风格、节奏和受众定位上找到相似选择。如果偏好某位演员或导演，也可以在搜索框直接检索。</div>
+      </div>
+      <div class="pk-faq-item">
+        <div class="pk-faq-q">片库网适合哪些人使用？</div>
+        <div class="pk-faq-a">片库网适合有影视消费习惯但不想在多个平台之间反复比较的用户。追剧型用户可以关注更新列表，周末观影型用户可以从电影分类和高分榜单入手，对纪录片和深度内容感兴趣的用户也能找到对应的入口。整体定位是提供结构化的影视内容导航，降低找片成本。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 用户评论 ===== -->
+  <section class="pk-section" id="pk-comments">
+    <h2 class="pk-section-title">用户评论 · 大家在片库网聊什么</h2>
+    <div class="pk-comments">
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a1">追</div>
+          <span class="pk-comment-name">追剧不睡觉</span>
+          <span class="pk-comment-date">11月6日</span>
+        </div>
+        <div class="pk-comment-text">暗夜追光第16集那个翻供真的没想到，前面铺垫了那么久的证据链说断就断，编剧下手够狠。片库网更新还挺及时，晚上回来就能看到。</div>
+        <div class="pk-comment-actions"><span>👍 42</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a2">电</div>
+          <span class="pk-comment-name">电影仓库管理员</span>
+          <span class="pk-comment-date">11月5日</span>
+        </div>
+        <div class="pk-comment-text">星际拾荒者的导演剪辑版多了12分钟确实补了不少背景，之前院线版有些地方觉得突兀，现在顺畅多了。片库网标注了版本差异这点挺实用。</div>
+        <div class="pk-comment-actions"><span>👍 28</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a3">纪</div>
+          <span class="pk-comment-name">纪录片老饕</span>
+          <span class="pk-comment-date">11月4日</span>
+        </div>
+        <div class="pk-comment-text">深海档案第5集那个热液喷口的画面太震撼了，4K画质在片库网上看着很舒服。希望多收录一些自然类纪录片。</div>
+        <div class="pk-comment-actions"><span>👍 35</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a4">山</div>
+          <span class="pk-comment-name">山海看完缓三天</span>
+          <span class="pk-comment-date">11月3日</span>
+        </div>
+        <div class="pk-comment-text">山海之间第30集那顿饭看得我眼泪直接下来，三代人一辈子就为了一个家。片库网这个分类里家庭剧选得不错，希望多推这类。</div>
+        <div class="pk-comment-actions"><span>👍 56</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a5">代</div>
+          <span class="pk-comment-name">代码迷城蹲更新</span>
+          <span class="pk-comment-date">11月2日</span>
+        </div>
+        <div class="pk-comment-text">代码迷城这个剧节奏有点慢热，前几集铺垫太多差点弃了，但从第6集开始好看起来了。片库网给的8.9分我觉得略高，8.5差不多。</div>
+        <div class="pk-comment-actions"><span>👍 19</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a6">下</div>
+          <span class="pk-comment-name">下饭剧专业户</span>
+          <span class="pk-comment-date">11月1日</span>
+        </div>
+        <div class="pk-comment-text">教室里的夏天番外篇挺良心的，毕业十年后的同学会拍得真实，没有强行大团圆。片库网这个更新提醒功能很实用，不用自己记时间。</div>
+        <div class="pk-comment-actions"><span>👍 31</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a1">她</div>
+          <span class="pk-comment-name">她的第二幕剧粉</span>
+          <span class="pk-comment-date">10月30日</span>
+        </div>
+        <div class="pk-comment-text">第20集直播事故后公开真相那段演得真好，四十岁女性的职场困境拍得很克制。片库网女性题材分类里这类剧应该多推一些。</div>
+        <div class="pk-comment-actions"><span>👍 44</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a2">拳</div>
+          <span class="pk-comment-name">拳台之上等上映</span>
+          <span class="pk-comment-date">10月29日</span>
+        </div>
+        <div class="pk-comment-text">拳台之上的幕后特辑看了，主演增重15公斤确实敬业。动作戏看起来是实拍不是特效，片库网标注的115分钟时长也合理，期待正片。</div>
+        <div class="pk-comment-actions"><span>👍 22</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a3">悬</div>
+          <span class="pk-comment-name">悬疑片爱好者</span>
+          <span class="pk-comment-date">10月28日</span>
+        </div>
+        <div class="pk-comment-text">片库网的悬疑分类做得不错，按评分排序找片很方便。不过有些老片没收录，希望资源库能再扩充一些经典悬疑片。</div>
+        <div class="pk-comment-actions"><span>👍 17</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a4">新</div>
+          <span class="pk-comment-name">新来的小白</span>
+          <span class="pk-comment-date">10月27日</span>
+        </div>
+        <div class="pk-comment-text">第一次用片库网，分类比想象中清楚，直接点悬疑进去就能看到一堆片名和简介。就是卡片上的简介有点短，有时候不太确定是不是我想看的那种。</div>
+        <div class="pk-comment-actions"><span>👍 9</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a5">路</div>
+          <span class="pk-comment-name">路过看两眼</span>
+          <span class="pk-comment-date">10月26日</span>
+        </div>
+        <div class="pk-comment-text">整体界面挺干净的，没有乱七八糟的弹窗。就是有些卡片的热度数据感觉更新不太及时，希望这块能再准一些。</div>
+        <div class="pk-comment-actions"><span>👍 13</span><span>💬 回复</span></div>
+      </div>
+      <div class="pk-comment">
+        <div class="pk-comment-head">
+          <div class="pk-avatar a6">动</div>
+          <span class="pk-comment-name">动画区常驻</span>
+          <span class="pk-comment-date">10月25日</span>
+        </div>
+        <div class="pk-comment-text">动漫分类里新番更新还跟得上，但老番收录偏少。片库网如果能加一个按年份筛选的功能就更好了。</div>
+        <div class="pk-comment-actions"><span>👍 15</span><span>💬 回复</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 相关资讯 ===== -->
+  <section class="pk-section" id="pk-news">
+    <h2 class="pk-section-title">影视资讯 · 片库网动态速递</h2>
+    <div class="pk-news-grid">
+      <div class="pk-news-card">
+        <div class="pk-news-date">2026年11月6日</div>
+        <div class="pk-news-title">暗夜追光第二季正式官宣，原班人马回归</div>
+        <div class="pk-news-desc">制作方确认第二季已进入前期筹备，预计2027年下半年开机，主要角色悉数回归，案件线将延续第一季结尾的悬念。</div>
+      </div>
+      <div class="pk-news-card">
+        <div class="pk-news-date">2026年11月5日</div>
+        <div class="pk-news-title">星际拾荒者导演剪辑版上线，新增12分钟内容</div>
+        <div class="pk-news-desc">导演在采访中透露，新增片段主要补充主角在废弃空间站的背景故事，以及一段被院线版删减的关键对话。</div>
+      </div>
+      <div class="pk-news-card">
+        <div class="pk-news-date">2026年11月3日</div>
+        <div class="pk-news-title">深海档案获自然纪录片年度推荐</div>
+        <div class="pk-news-desc">该片凭借万米深潜的独家画面和科考过程的真实记录，入选多个纪录片推荐榜单，片库网用户评分维持9.0分。</div>
+      </div>
+      <div class="pk-news-card">
+        <div class="pk-news-date">2026年11月2日</div>
+        <div class="pk-news-title">她的第二幕收官在即，大结局点映礼举行</div>
+        <div class="pk-news-desc">主演出席收官点映活动，透露结局将保持开放式处理，不强行给角色安排圆满归宿，引发观众讨论。</div>
+      </div>
+      <div class="pk-news-card">
+        <div class="pk-news-date">2026年10月30日</div>
+        <div class="pk-news-title">教室里的夏天番外篇上线，聚焦毕业十年后</div>
+        <div class="pk-news-desc">番外篇以同学会为背景，补完五位主角成年后的生活状态，片库网同步更新了该条目的集数信息。</div>
+      </div>
+      <div class="pk-news-card">
+        <div class="pk-news-date">2026年10月28日</div>
+        <div class="pk-news-title">拳台之上发布正式预告，定档12月</div>
+        <div class="pk-news-desc">预告片展示了大量拳击实拍镜头，导演强调所有擂台戏份均由演员亲自完成训练后拍摄，未使用替身完成主要动作。</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== 页脚 ===== -->
+<footer class="pk-footer">
+  <div class="pk-footer-inner">
+    <div class="pk-footer-grid">
+      <div class="pk-footer-brand">
+        <h4>片库网</h4>
+        <p>专注影视内容聚合与推荐，为影视爱好者提供结构化的找片入口。电影、电视剧、动漫、纪录片分类索引，更新追踪与口碑参考，让选择更高效。</p>
+      </div>
+      <div class="pk-footer-col">
+        <h5>内容分类</h5>
+        <a href="/#pk-hot">热门推荐</a>
+        <a href="/#pk-update">最新更新</a>
+        <a href="/#pk-cat">分类片库</a>
+        <a href="/#pk-deep">深度解析</a>
+      </div>
+      <div class="pk-footer-col">
+        <h5>使用帮助</h5>
+        <a href="/#pk-guide">体验指南</a>
+        <a href="/#pk-faq">常见问题</a>
+        <a href="/#pk-comments">用户评论</a>
+        <a href="/#pk-news">影视资讯</a>
+      </div>
+      <div class="pk-footer-col">
+        <h5>友情链接</h5>
+        <a href="/#pk-hot">影视资源导航</a>
+        <a href="/#pk-cat">高分片单</a>
+        <a href="/#pk-update">追更日历</a>
+        <a href="/#pk-news">行业观察</a>
+      </div>
+    </div>
+    <div class="pk-footer-bottom">
+      <span>© 2026 片库网 · 内容聚合与推荐平台</span>
+      <span>免责声明：本页面为影视内容导航与信息展示，不提供存储与播放服务。所有内容信息仅供参考，请以各平台实际播出为准。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ 手风琴
+  document.querySelectorAll('.pk-faq-q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var item = this.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.pk-faq-item').forEach(function(el){el.classList.remove('open')});
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
